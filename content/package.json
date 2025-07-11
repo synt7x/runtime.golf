@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:ts && npm run build:sass",
+    "build:ts": "tsc",
+    "build:sass": "sass css:../public/css --style=compressed --no-source-map",
+    "watch": "npm run watch:ts & npm run watch:sass",
+    "watch:ts": "tsc --watch",
+    "watch:sass": "sass css:../public/css --watch --style=compressed --no-source-map",
+    "dev": "npm run watch",
+    "clean": "rimraf ../public/js ../public/css"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "rimraf": "^6.0.1",
+    "sass": "^1.89.2",
+    "typescript": "^5.8.3"
+  }
+}
