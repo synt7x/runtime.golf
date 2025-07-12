@@ -1,0 +1,33 @@
+:root
+    // Light theme (default) - lighter variations of vim colors
+    --bg-primary: #f8f8f8
+    --bg-nav: #ffffff
+    --bg-secondary: #eeeeee
+    --text-primary: #2d2d2d
+    --text-secondary: #5f5f5f
+    --border-color: #d4d4d4
+    --btn-bg: #f0f0f0
+    --btn-bg-hover: #e0e0e0
+    --btn-text: var(--text-secondary)
+    --btn-text-hover: var(--text-primary)
+    --shadow: rgba(0, 0, 0, 0.1)
+    --shadow-hover: rgba(0, 0, 0, 0.15)
+
+@media (prefers-color-scheme: dark)
+    :root
+        --bg-primary: #161616
+        --bg-nav: #121212
+        --bg-secondary: #1e1e1e
+        --text-primary: #cccccc
+        --text-secondary: #5f5f5f
+        --border-color: #2e2e2e
+        --btn-bg: #242424
+        --btn-bg-hover: #343434
+        --btn-text: #cccccc
+        --shadow: rgba(0, 0, 0, 0.3)
+        --shadow-hover: rgba(0, 0, 0, 0.4)
+
+body
+    background-color: var(--bg-primary)
+    color: var(--text-primary)
+    transition: background-color 0.3s ease, color 0.3s ease

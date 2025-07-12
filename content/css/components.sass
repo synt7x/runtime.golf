@@ -1,0 +1,164 @@
+.btn
+    display: inline-flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: var(--spacing-2) var(--spacing-4)
+    background-color: var(--btn-bg)
+    color: var(--btn-text)
+    text-decoration: none
+    border-radius: var(--radius-md)
+    font-weight: 500
+    font-size: var(--font-size-sm)
+    transition: all 0.2s ease
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+    border: 1px solid var(--border-color)
+
+    &:hover
+        background-color: var(--btn-bg-hover)
+        color: var(--btn-text-hover)
+        text-decoration: none
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+
+    > span
+        display: none
+        @media (min-width: 850px)
+            display: inline-flex
+
+    &:active
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+
+    &-github
+        color: var(--color-fg)
+        background-color: black
+
+        &:hover
+            background-color: var(--color-gray-900)
+            color: white
+            text-decoration: none
+
+.icon
+    width: 16px
+    height: 16px
+    fill: currentColor
+    transition: fill 0.2s ease
+
+.navbar-icon
+    filter: brightness(0) invert(1)
+
+.header
+    position: sticky
+    top: 0
+    background-color: var(--bg-nav)
+    z-index: var(--z-sticky)
+    border-bottom: 1px solid var(--border-color)
+    backdrop-filter: blur(8px)
+    -webkit-backdrop-filter: blur(8px)
+
+.navbar
+    display: flex
+    align-items: center
+    justify-content: left
+    padding: var(--spacing-4) 0
+    max-width: 1200px
+    margin: 0 auto
+    padding-left: var(--spacing-4)
+    padding-right: var(--spacing-4)
+
+    @media (min-width: 640px)
+        padding-left: var(--spacing-6)
+        padding-right: var(--spacing-6)
+
+    @media (min-width: 1024px)
+        padding-left: var(--spacing-8)
+        padding-right: var(--spacing-8)
+
+.navbar-brand
+    display: flex
+    align-items: center
+    gap: var(--spacing-3)
+    font-weight: 600
+    font-size: var(--font-size-lg)
+    color: var(--text-secondary)
+    text-decoration: none
+    transition: color 0.2s ease
+    border-radius: var(--radius-md)
+    padding: var(--spacing-1) 0
+
+    &:hover
+        color: var(--text-primary)
+
+.navbar-divider
+    height: 2rem
+    width: 1px
+    background-color: var(--border-color)
+    margin: 0 var(--spacing-4)
+
+.navbar-logo
+    width: 32px
+    height: 32px
+    border-radius: var(--radius-md)
+
+.navbar-nav
+    display: flex
+    align-items: center
+    gap: var(--spacing-6)
+
+.navbar-menu
+    flex-direction: column
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    height: 100%
+    background-color: var(--color-bg)
+    box-shadow: var(--shadow-lg)
+    display: flex
+    flex-direction: row
+    position: static
+    background-color: transparent
+    border-bottom: none
+    padding: 0
+    box-shadow: none
+
+.navbar-link
+    display: flex
+    align-items: center
+    color: var(--btn-text)
+    text-decoration: none
+    font-weight: 500
+    padding: var(--spacing-1) var(--spacing-2)
+    border-radius: var(--radius-md)
+    transition: all 0.2s ease
+    position: relative
+    background-color: var(--btn-bg)
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+
+    &:hover
+        color: var(--btn-text-hover)
+        background-color: var(--btn-bg-hover)
+
+.navbar-toggle
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 40px
+    height: 40px
+    border: none
+    background: none
+    color: var(--color-fg)
+    cursor: pointer
+    border-radius: var(--radius-md)
+    transition: all 0.2s ease
+
+    &:hover
+        background-color: var(--color-gray-800)
+        color: var(--color-primary)
+
+    @media (min-width: 768px)
+        display: none
+
+.navbar-actions
+    margin-left: auto
+    display: flex
+    align-items: center
+    gap: var(--spacing-3)

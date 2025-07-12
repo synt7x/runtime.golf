@@ -9,7 +9,8 @@ DATABASE := runtime_golf.db
 APP := $(CURDIR)/app
 CONTENT := $(CURDIR)/content
 DATA := $(CURDIR)/data
-CONF := $(CURDIR)/server/conf
+SERVER := $(CURDIR)/server
+CONF := $(SERVER)/conf
 
 all: run
 
@@ -17,7 +18,7 @@ all: run
 .PHONY: run dev build clean init db repl
 
 run: build
-	nginx -p $(CURDIR) -c $(CONF)/nginx.conf
+	nginx -p $(SERVER) -c $(CONF)/nginx.conf
 	cd $(APP) && $(CARGO) run --release
 
 dev:

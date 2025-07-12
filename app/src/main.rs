@@ -1,6 +1,7 @@
 use std::net::SocketAddr;
 
 mod api;
+mod db;
 mod pages;
 mod tools;
 

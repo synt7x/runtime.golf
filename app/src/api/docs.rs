@@ -1,12 +1,12 @@
 use utoipa::OpenApi;
 
-use super::oauth::User;
+use crate::db::auth::User;
 
 #[derive(OpenApi)]
 #[openapi(
     paths(
-        crate::api::oauth::github_auth,
-        crate::api::oauth::github_callback,
+        crate::api::oauth::github,
+        crate::api::oauth::callback,
     ),
     components(schemas(User)),
     tags(

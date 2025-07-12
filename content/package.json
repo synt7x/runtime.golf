@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "npm run build:ts && npm run build:sass",
-    "build:ts": "tsc",
+    "build:ts": "esbuild js/*.ts --bundle --outdir=../public/js --format=esm --target=es2020 --minify",
     "build:sass": "sass css:../public/css --style=compressed --no-source-map",
     "watch": "npm run watch:ts & npm run watch:sass",
-    "watch:ts": "tsc --watch",
+    "watch:ts": "esbuild js/*.ts --bundle --outdir=../public/js --format=esm --target=es2020 --watch",
     "watch:sass": "sass css:../public/css --watch --style=compressed --no-source-map",
     "dev": "npm run watch",
     "clean": "rimraf ../public/js ../public/css"
@@ -15,8 +15,14 @@
   "private": true,
   "devDependencies": {
     "@types/node": "^24.0.10",
+    "esbuild": "^0.25.6",
     "rimraf": "^6.0.1",
     "sass": "^1.89.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@codemirror/language": "^6.11.2",
+    "@codemirror/legacy-modes": "^6.5.1",
+    "codemirror": "^6.0.2"
   }
 }
