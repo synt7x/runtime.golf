@@ -6,13 +6,11 @@ if not lim then
 	return ngx.exit(500)
 end
 
--- Use IP address as key
 local key = ngx.var.binary_remote_addr
 local client_ip = ngx.var.remote_addr
 local uri = ngx.var.uri
 local method = ngx.var.request_method
 
--- Debug: Log request details
 ngx.log(
 	ngx.INFO,
 	"Rate limiter: Processing request - IP: ",
