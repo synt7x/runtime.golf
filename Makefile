@@ -18,11 +18,13 @@ all: run
 .PHONY: run dev build clean init db repl
 
 run: build
-	nginx -p $(SERVER) -c $(CONF)/nginx.conf
 	cd $(APP) && $(CARGO) run --release
 
+serve:
+	nginx -p $(SERVER) -c $(CONF)/nginx.conf
+
 dev:
-	cd $(APP) && $(CARGO) build
+	cd $(APP) && $(CARGO) build --release
 	@echo "App built successfully (dev)"
 	cd $(CONTENT) && $(NPM) install && $(NPM) run build
 	@echo "Content built successfully (dev)"

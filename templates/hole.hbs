@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>runtime.golf</title>
     <link rel="stylesheet" href="/css/root.css">
-    <script type="module" src="/js/test.js" defer></script>
+    <link rel="stylesheet" href="/css/editor.css">
+    <script type="module" src="/js/hole.js" defer></script>
 </head>
+
 <body>
     <header>
-        
+        <header class="header">
+            <nav class="navbar">
+                <a href="/" class="navbar-brand">
+                    <span>runtime.golf</span>
+                </a>
+
+                <div class="navbar-divider"></div>
+
+                <div class="navbar-menu">
+                    <div class="navbar-nav">
+                        <a href="/" class="btn">
+                            <svg alt="Holes" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <use href="/assets/icons/flag.svg"></use>
+                            </svg>
+                            <span>Holes</span>
+                        </a>
+                        <a href="/leaderboards" class="btn">
+                            <svg alt="Leaderboards" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <use href="/assets/icons/users.svg"></use>
+                            </svg>
+                            <span>Leaderboards</span>
+                        </a>
+                        <a href="/about" class="btn">
+                            <svg alt="About" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <use href="/assets/icons/book.svg"></use>
+                            </svg>
+                            <span>About</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="navbar-actions">
+                    <a href="/api/github" class="btn btn-github">
+                        <svg alt="Github Login" class="icon icon-github" viewBox="0 0 24 24" fill="currentColor">
+                            <use href="/assets/icons/github.svg"></use>
+                        </svg>
+                        <span>Login with Github</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
     </header>
     <main>
-        <div class="editor-container">
+        <div class="container">
             <h2>Your Solution</h2>
+            <div class="select">
+                <select id="selector"></select>
+            </div>
+            <button class="btn">Run Code</button>
             <div id="editor"></div>
-            <button id="run-code" type="button">Run Code</button>
+
         </div>
     </main>
     <footer>
-        
+
     </footer>
 </body>
+
 </html>

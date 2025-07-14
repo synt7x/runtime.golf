@@ -30,3 +30,18 @@ body
     background-color: var(--bg-primary)
     color: var(--text-primary)
     transition: background-color 0.3s ease, color 0.3s ease
+
+::-webkit-scrollbar
+    width: 12px
+    background: var(--bg-secondary)
+
+::-webkit-scrollbar-thumb
+    background: var(--border-color)
+    border-radius: 6px
+
+::-webkit-scrollbar-thumb:hover
+    background: var(--btn-bg-hover)
+
+*
+    scrollbar-width: thin
+    scrollbar-color: var(--border-color) var(--bg-secondary)
