@@ -1,6 +1,6 @@
 SQLITE := sqlite3
 CARGO := cargo
-NPM := bun # npm
+NPM := npm
 
 # Files
 DATABASE := runtime_golf.db
