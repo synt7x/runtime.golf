@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run build:ts && npm run build:sass",
-    "build:ts": "esbuild js/**/*.ts --bundle --outdir=../public/js --format=esm --target=es2020 --minify",
+    "build:ts": "esbuild js/**/*.ts js/*.ts --bundle --outdir=../public/js --format=esm --target=es2020 --minify",
     "build:sass": "sass css:../public/css --style=compressed --no-source-map",
     "watch": "npm run watch:ts & npm run watch:sass",
     "watch:ts": "esbuild js/**/*.ts --bundle --outdir=../public/js --format=esm --target=es2020 --watch",
