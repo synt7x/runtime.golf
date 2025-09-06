@@ -49,6 +49,7 @@ db:
 	@echo "Initializing database"
 	@cd $(DATA)
 	$(SQLITE) $(DATA)/$(DATABASE) ".databases"
+	$(SQLITE) $(DATA)/$(DATABASE) < $(APP)/migrations/1_init.sql
 
 repl:
 	@echo "Starting REPL"

@@ -3,7 +3,7 @@ import { StreamLanguage } from "@codemirror/language";
 import { c, csharp, cpp } from "@codemirror/legacy-modes/mode/clike";
 import { lua } from "@codemirror/legacy-modes/mode/lua";
 import { python } from "@codemirror/legacy-modes/mode/python";
-import { knight } from "codemirror-knight";
+import { knight } from "codemirror-lang-knight";
 
 export const languages = {
   c: StreamLanguage.define(c),
