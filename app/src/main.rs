@@ -10,11 +10,12 @@ use sqlx::sqlite::SqlitePoolOptions;
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
 
-use crate::api::docs::ApiDoc;
+use crate::{api::docs::ApiDoc, tools::holes};
 
 #[tokio::main]
 async fn main() {
     dotenvy::from_filename("../.env").ok();
+    holes::load();
 
     let pool = SqlitePoolOptions::new()
         .max_connections(5)

@@ -23,6 +23,7 @@
   "dependencies": {
     "@codemirror/language": "^6.11.2",
     "@codemirror/legacy-modes": "^6.5.1",
-    "codemirror": "^6.0.2"
+    "codemirror": "^6.0.2",
+    "codemirror-knight": "^3.0.0"
   }
 }

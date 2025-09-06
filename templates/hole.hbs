@@ -43,6 +43,14 @@
 
                 </div>
 
+                {{#if user}}
+                <div class="navbar-actions">
+                    <a href="/user/{{user.username}}" class="btn">
+                        <img src="https://github.com/{{user.username}}.png" alt="Profile Picture" class="pfp"/>
+                        <span>{{user.username}}</span>
+                    </a>
+                </div>
+                {{else}}
                 <div class="navbar-actions">
                     <a href="/api/github" class="btn btn-github">
                         <svg alt="Github Login" class="icon icon-github" viewBox="0 0 24 24" fill="currentColor">
@@ -51,6 +59,7 @@
                         <span>Login with Github</span>
                     </a>
                 </div>
+                {{/if}}
             </nav>
         </header>
     </header>
