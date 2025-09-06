@@ -1,6 +1,7 @@
-SQLITE := sqlite3
-CARGO := cargo
-NPM := npm
+SQLITE ?= sqlite3
+CARGO ?= cargo
+NPM ?= npm
+OPENRESTY ?= openresty
 
 # Files
 DATABASE := runtime_golf.db
@@ -21,7 +22,7 @@ run: build
 	cd $(APP) && $(CARGO) run --release
 
 serve:
-	nginx -p $(SERVER) -c $(CONF)/nginx.conf
+	$(OPENRESTY) -p $(SERVER) -c $(CONF)/nginx.conf
 
 dev:
 	cd $(APP) && $(CARGO) build --release
