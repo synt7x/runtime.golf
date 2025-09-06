@@ -23,10 +23,10 @@ async fn main() {
         .await
         .expect("Failed to connect to the database");
 
-    sqlx::migrate!("./migrations")
-        .run(&pool)
-        .await
-        .expect("Failed to run migrations");
+    // sqlx::migrate!("./migrations")
+    //     .run(&pool)
+    //     .await
+    //     .expect("Failed to run migrations");
 
     let app = Router::new()
         .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", ApiDoc::openapi()))
