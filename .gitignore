@@ -2,6 +2,8 @@
 app/target/
 app/Cargo.lock
 app/.sqlx/
+jobs/target/
+jobs/Cargo.lock
 
 # Frontend
 content/node_modules/
