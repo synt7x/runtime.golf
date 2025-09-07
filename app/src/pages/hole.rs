@@ -1,5 +1,3 @@
-use std::sync::Arc;
-
 use axum::{
     extract::{Path, State},
     response::Html,
@@ -11,8 +9,6 @@ use crate::{
     RenderState,
     tools::{holes, jwt, templates},
 };
-
-const TEMPLATE: &str = "../templates/hole.hbs";
 
 pub async fn render(
     Path(id): Path<String>,

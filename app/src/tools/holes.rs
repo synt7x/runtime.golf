@@ -27,8 +27,6 @@ pub fn load() {
     HOLES.set(holes).expect("Holes map already constructed");
 }
 
-pub fn db() {}
-
 pub fn get() -> &'static HashMap<String, Hole> {
     return HOLES.get().expect("Holes map not constructed");
 }

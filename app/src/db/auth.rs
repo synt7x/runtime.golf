@@ -1,5 +1,4 @@
 use sqlx::{SqlitePool, query};
-use utoipa::ToSchema;
 use uuid::Uuid;
 
 use crate::{db::user::User, tools::github::GithubUser};

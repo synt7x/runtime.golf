@@ -8,7 +8,6 @@ use axum::{
 use axum_extra::extract::CookieJar;
 use chrono::{Duration, Utc};
 use serde::{Deserialize, Serialize};
-use sqlx::SqlitePool;
 
 use crate::{
     RenderState, db,

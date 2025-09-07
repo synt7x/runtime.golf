@@ -1,12 +1,9 @@
-use std::sync::Arc;
-
 use axum::{
     extract::{Path, State},
     response::Html,
 };
 use axum_extra::extract::CookieJar;
 use serde_json::json;
-use sqlx::SqlitePool;
 
 use crate::{
     RenderState,
@@ -14,7 +11,6 @@ use crate::{
     tools::{jwt, templates},
 };
 
-#[axum::debug_handler]
 pub async fn render(
     Path(username): Path<String>,
     State(state): State<RenderState>,
