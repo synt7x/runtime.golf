@@ -1,4 +1,4 @@
-use std::net::SocketAddr;
+use std::{net::SocketAddr, sync::Arc};
 
 mod api;
 mod db;
@@ -6,16 +6,28 @@ mod pages;
 mod tools;
 
 use axum::Router;
-use sqlx::sqlite::SqlitePoolOptions;
+use handlebars::Handlebars;
+use sqlx::{SqlitePool, sqlite::SqlitePoolOptions};
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
 
-use crate::{api::docs::ApiDoc, tools::holes};
+use crate::{
+    api::docs::ApiDoc,
+    tools::{holes, templates},
+};
+
+#[derive(Clone)]
+pub struct RenderState {
+    pub pool: SqlitePool,
+    pub handlebars: Arc<Handlebars<'static>>,
+}
 
 #[tokio::main]
 async fn main() {
     dotenvy::from_filename("../.env").ok();
     holes::load();
+
+    let handlebars = templates::init();
 
     let pool = SqlitePoolOptions::new()
         .max_connections(5)
@@ -28,11 +40,13 @@ async fn main() {
     //     .await
     //     .expect("Failed to run migrations");
 
+    let state = RenderState { pool, handlebars };
+
     let app = Router::new()
         .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", ApiDoc::openapi()))
         .merge(api::routes())
         .merge(pages::routes())
-        .with_state(pool);
+        .with_state(state);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     println!("Server running on http://{}", addr);

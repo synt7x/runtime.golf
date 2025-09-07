@@ -1,6 +1,6 @@
 use utoipa::OpenApi;
 
-use crate::db::auth::User;
+use crate::db::user::User;
 
 #[derive(OpenApi)]
 #[openapi(

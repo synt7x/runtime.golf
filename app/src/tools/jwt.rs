@@ -6,7 +6,7 @@ use jsonwebtoken::{DecodingKey, EncodingKey, Header, Validation, decode, encode}
 use serde::{Deserialize, Serialize};
 use sqlx::SqlitePool;
 
-use crate::db::auth::{self, User};
+use crate::db::{auth, user::User};
 
 #[derive(Serialize, Deserialize)]
 pub struct Claims {

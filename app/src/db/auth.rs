@@ -2,16 +2,7 @@ use sqlx::{SqlitePool, query};
 use utoipa::ToSchema;
 use uuid::Uuid;
 
-use crate::tools::github::GithubUser;
-
-#[derive(ToSchema)]
-pub struct User {
-    pub id: i64,
-    pub github_id: i64,
-    pub username: String,
-    pub admin: bool,
-    pub session_id: String,
-}
+use crate::{db::user::User, tools::github::GithubUser};
 
 pub async fn login(
     user: GithubUser,

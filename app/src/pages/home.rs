@@ -2,14 +2,14 @@ use axum::{extract::State, response::Html};
 use axum_extra::extract::CookieJar;
 use chrono::Datelike;
 use serde_json::json;
-use sqlx::SqlitePool;
 
-use crate::tools::{holes, jwt, templates};
+use crate::{
+    RenderState,
+    tools::{holes, jwt, templates},
+};
 
-const TEMPLATE: &str = "../templates/index.hbs";
-
-pub async fn render(State(pool): State<SqlitePool>, cookies: CookieJar) -> Html<String> {
-    let session = jwt::session(&cookies, &pool).await;
+pub async fn render(State(state): State<RenderState>, cookies: CookieJar) -> Html<String> {
+    let session = jwt::session(&cookies, &state.pool).await;
     let data = match session {
         Some(user) => &json!({
             "year": chrono::Utc::now().year() - 1,
@@ -27,7 +27,7 @@ pub async fn render(State(pool): State<SqlitePool>, cookies: CookieJar) -> Html<
         }),
     };
 
-    match templates::render(TEMPLATE, data) {
+    match templates::render(&state.handlebars, "index", data) {
         Ok(content) => Html(content),
         Err(e) => {
             eprint!("Error rendering template: {}", e);

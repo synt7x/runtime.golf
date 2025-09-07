@@ -1,9 +1,9 @@
 pub mod docs;
 pub mod oauth;
 
+use crate::RenderState;
 use axum::Router;
-use sqlx::SqlitePool;
 
-pub fn routes() -> Router<SqlitePool> {
+pub fn routes() -> Router<RenderState> {
     Router::new().merge(oauth::routes())
 }

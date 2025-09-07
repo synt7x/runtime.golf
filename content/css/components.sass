@@ -225,3 +225,43 @@ select
         background-color: var(--btn-bg-hover)
         color: var(--btn-text-hover)
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+
+.holes
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
+    gap: var(--spacing-4)
+    width: 100%
+    max-width: 1200px
+    margin: 0 auto
+    padding: var(--spacing-4)
+    box-sizing: border-box
+
+.hole
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: var(--spacing-4)
+    background-color: var(--btn-bg)
+    color: var(--btn-text)
+    text-decoration: none
+    border-radius: var(--radius-md)
+    font-weight: 500
+    font-size: var(--font-size-sm)
+    transition: all 0.2s ease
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+    border: 1px solid var(--border-color)
+    height: 100px
+
+    &:hover
+        background-color: var(--btn-bg-hover)
+        color: var(--btn-text-hover)
+        text-decoration: none
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+
+    > span
+        display: none
+        @media (min-width: 850px)
+            display: inline-flex
+
+    &:active
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)

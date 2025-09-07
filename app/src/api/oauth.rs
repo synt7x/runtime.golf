@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize};
 use sqlx::SqlitePool;
 
 use crate::{
-    db,
+    RenderState, db,
     tools::{
         github,
         jwt::{self, Claims},
@@ -40,14 +40,14 @@ pub struct GitHubUser {
     tag = "github"
 )]
 pub async fn github(
-    State(pool): State<SqlitePool>,
+    State(state): State<RenderState>,
     cookies: CookieJar,
 ) -> Result<impl IntoResponse, StatusCode> {
     let client_id = std::env::var("CLIENT_ID").map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
     let redirect_uri = urlencoding::encode("http://127.0.0.1/api/github/callback");
     let scope = urlencoding::encode("read:user");
 
-    if jwt::session(&cookies, &pool).await.is_some() {
+    if jwt::session(&cookies, &state.pool).await.is_some() {
         return Ok((cookies, Redirect::to("/")));
     }
 
@@ -73,11 +73,10 @@ pub async fn github(
 )]
 pub async fn callback(
     Query(params): Query<AuthCallback>,
-    State(pool): State<SqlitePool>,
+    State(state): State<RenderState>,
     cookies: CookieJar,
 ) -> Result<impl IntoResponse, StatusCode> {
-    println!("Received GitHub OAuth code: {}", params.code);
-    if jwt::session(&cookies, &pool).await.is_some() {
+    if jwt::session(&cookies, &state.pool).await.is_some() {
         return Ok((cookies, Redirect::to("/")));
     }
 
@@ -89,7 +88,7 @@ pub async fn callback(
         .await
         .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 
-    let user = db::auth::login(github_user, &pool)
+    let user = db::auth::login(github_user, &state.pool)
         .await
         .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 
@@ -109,7 +108,7 @@ pub async fn callback(
     Ok((cookies.add(cookie), Redirect::to("/")))
 }
 
-pub fn routes() -> Router<SqlitePool> {
+pub fn routes() -> Router<RenderState> {
     Router::new()
         .route("/api/github", get(github))
         .route("/api/github/callback", get(callback))
