@@ -43,7 +43,8 @@ pub async fn github(
     cookies: CookieJar,
 ) -> Result<impl IntoResponse, StatusCode> {
     let client_id = std::env::var("CLIENT_ID").map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
-    let redirect_uri = urlencoding::encode("http://127.0.0.1/api/github/callback");
+    let redirect_url = std::env::var("URL").map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+    let redirect_uri = urlencoding::encode(redirect_url.as_str());
     let scope = urlencoding::encode("read:user");
 
     if jwt::session(&cookies, &state.pool).await.is_some() {
