@@ -3,7 +3,10 @@
 
 <head>
     <title>{{profile.username}}</title>
+    <link rel="stylesheet" href="/css/user.css">
+    <script type="module" src="/js/user.js" defer></script>
     {{> meta}}
+    <meta id="id" data-user="{{profile.id}}">
 </head>
 
 <body>
@@ -11,7 +14,15 @@
         {{> navbar}}
     </header>
     <main>
-
+        <div class="profile">
+            <img src="https://github.com/{{profile.username}}.png" class="pfp">
+            <h2>
+                {{profile.username}}
+                {{#if profile.admin}}
+                <a class="admin" href="/about#staff">*</a>
+                {{/if}}
+            </h2>
+        </div>
     </main>
     <footer>
 
