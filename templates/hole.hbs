@@ -16,11 +16,16 @@
     </header>
     <main>
         <div class="container">
-            <h2>{{hole.title}}</h2>
-            <div class="select">
-                <select id="selector"></select>
+            <div class="hole-info">
+                <h1>{{hole.title}}</h1>
+                <p>{{hole.description}}</p>
             </div>
-            <button class="btn">Run Code</button>
+            <div class="language-controls">
+                <div class="select">
+                    <select id="selector"></select>
+                </div>
+                <button class="btn">Run Code</button>
+            </div>
             <div id="editor"></div>
 
         </div>

@@ -15,13 +15,17 @@
     </header>
     <main>
         <div class="profile">
-            <img src="https://github.com/{{profile.username}}.png" class="pfp">
-            <h2>
-                {{profile.username}}
-                {{#if profile.admin}}
-                <a class="admin" href="/about#staff">*</a>
-                {{/if}}
-            </h2>
+            <div class="userinfo">
+                <img src="https://avatars.githubusercontent.com/u/{{profile.github_id}}" class="headshot">
+                <div class="stats">
+                    <h2>
+                        {{profile.username}}
+                        {{#if profile.admin}}
+                        <a class="admin" href="/about#staff">*</a>
+                        {{/if}}
+                    </h2>
+                </div>
+            </div>
         </div>
     </main>
     <footer>

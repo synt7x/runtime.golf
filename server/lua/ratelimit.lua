@@ -11,18 +11,6 @@ local client_ip = ngx.var.remote_addr
 local uri = ngx.var.uri
 local method = ngx.var.request_method
 
-ngx.log(
-	ngx.INFO,
-	"Rate limiter: Processing request - IP: ",
-	client_ip,
-	" Method: ",
-	method,
-	" URI: ",
-	uri,
-	" Key: ",
-	ngx.encode_base64(key)
-)
-
 local delay, err = lim:incoming(key, true)
 
 if not delay then
