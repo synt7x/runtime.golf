@@ -32,7 +32,7 @@ pub async fn render(
             "hole": holes.get(&id).unwrap(),
         }),
         None => &json!({
-            "holes": holes.get(&id).unwrap(),
+            "hole": holes.get(&id).unwrap(),
         }),
     };
 
