@@ -43,10 +43,14 @@
     transition: fill 0.2s ease
 
 .pfp
-    width: 24px
-    height: 24px
+    width: 16px
+    height: 16px
     border-radius: 50%
     object-fit: cover
+
+    @media (min-width: 850px)
+        width: 20px
+        height: 20px
 
 .navbar-icon
     filter: brightness(0) invert(1)
@@ -98,6 +102,10 @@
     width: 1px
     background-color: var(--border-color)
     margin: 0 var(--spacing-4)
+    display: none
+
+    @media (min-width: 475px)
+        display: block
 
 .navbar-logo
     width: 32px
@@ -118,13 +126,16 @@
     height: 100%
     background-color: var(--color-bg)
     box-shadow: var(--shadow-lg)
-    display: flex
+    display: none
     flex-direction: row
     position: static
     background-color: transparent
     border-bottom: none
     padding: 0
     box-shadow: none
+
+    @media (min-width: 475px)
+        display: flex
 
 .navbar-link
     display: flex
@@ -144,30 +155,25 @@
         background-color: var(--btn-bg-hover)
 
 .navbar-toggle
-    display: flex
-    align-items: center
-    justify-content: center
-    width: 40px
-    height: 40px
-    border: none
-    background: none
-    color: var(--color-fg)
-    cursor: pointer
-    border-radius: var(--radius-md)
-    transition: all 0.2s ease
-
-    &:hover
-        background-color: var(--color-gray-800)
-        color: var(--color-primary)
-
-    @media (min-width: 768px)
-        display: none
-
-.navbar-actions
     margin-left: auto
     display: flex
     align-items: center
     gap: var(--spacing-3)
+    > .btn
+        padding-top: var(--spacing-1)
+        padding-bottom: var(--spacing-1)
+
+    @media (min-width: 475px)
+        display: none
+
+.navbar-actions
+    margin-left: auto
+    display: none
+    align-items: center
+    gap: var(--spacing-3)
+
+    @media (min-width: 475px)
+        display: flex
 
 #editor
     width: 100%
@@ -238,7 +244,8 @@ select
 
 .hole
     display: flex
-    align-items: center
+    flex-direction: column
+    align-items: start
     justify-content: center
     padding: var(--spacing-4)
     background-color: var(--btn-bg)
@@ -246,11 +253,20 @@ select
     text-decoration: none
     border-radius: var(--radius-md)
     font-weight: 500
-    font-size: var(--font-size-sm)
+    font-size: var(--font-size-md)
     transition: all 0.2s ease
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
     border: 1px solid var(--border-color)
     height: 100px
+
+    > p
+        text-overflow: ellipsis
+        white-space: nowrap
+        overflow: hidden
+        max-width: 100%
+
+    > span
+        font-weight: bold
 
     &:hover
         background-color: var(--btn-bg-hover)
@@ -258,10 +274,10 @@ select
         text-decoration: none
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
 
-    > span
-        display: none
-        @media (min-width: 850px)
-            display: inline-flex
-
     &:active
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+
+.hole-constant
+    border-color: var(--color-yellow)
+.hole-series
+    border-color: var(--color-green)
