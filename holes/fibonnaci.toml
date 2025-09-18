@@ -1,0 +1,5 @@
+title = "fibonnaci"
+kind = "series"
+id = 2
+description = """Generate the nth Fibonnaci number"""
+instructions = """Given one argument being a positive integer n, return the nth Fibonnaci number."""

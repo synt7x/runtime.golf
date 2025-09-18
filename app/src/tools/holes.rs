@@ -6,6 +6,8 @@ pub struct Hole {
     pub id: i64,
     pub title: String,
     pub description: String,
+    pub kind: String,
+    pub instructions: String,
 }
 
 static HOLES: OnceLock<HashMap<String, Hole>> = OnceLock::new();

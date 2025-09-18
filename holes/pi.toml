@@ -1,4 +1,6 @@
 title = "π"
+kind = "constant"
 id = 1
-description = """Given two arguments, one being the index of the digit to start at and the other being the number of digits to return,
+description = """Generate a range of digits of π"""
+instructions = """Given two arguments, one being the index of the digit to start at and the other being the number of digits to return,
 return that many digits of π starting from the given index. The first digit after the decimal point is at index 0."""

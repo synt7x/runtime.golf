@@ -1,3 +1,37 @@
+<dialog id="nav-dialog">
+    <div>
+        <a href="/" class="btn">
+            <svg alt="Holes" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <use href="/assets/icons/flag.svg#1"></use>
+            </svg>
+        </a>
+        <a href="/leaderboards" class="btn">
+            <svg alt="Leaderboards" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <use href="/assets/icons/users.svg#1"></use>
+            </svg>
+        </a>
+        <a href="/about" class="btn">
+            <svg alt="About" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <use href="/assets/icons/book.svg#1"></use>
+            </svg>
+        </a>
+        {{#if user}}
+        <a href="/users/{{user.username}}" class="btn">
+            <img src="https://avatars.githubusercontent.com/u/{{user.github_id}}" alt="Profile Picture" class="pfp" />
+        </a>
+        {{else}}
+        <a href="/api/github" class="btn btn-github">
+            <svg alt="Github Login" class="icon icon-github" viewBox="0 0 24 24" fill="currentColor">
+                <use href="/assets/icons/github.svg#1"></use>
+            </svg>
+        </a>
+        {{/if}}
+        <a href="#" class="btn" id="nav-dialog-close">
+            x
+        </a>
+    </div>
+</dialog>
+
 <nav class="navbar">
     <a href="/" class="navbar-brand">
         <span>runtime.golf</span>
@@ -26,7 +60,6 @@
                 <span>About</span>
             </a>
         </div>
-
     </div>
     {{#if user}}
     <div class="navbar-actions">
@@ -45,4 +78,10 @@
         </a>
     </div>
     {{/if}}
+    <div class="navbar-toggle">
+        <a href="#" class="btn" id="nav-dialog-open">
+            +
+        </a>
+    </div>
 </nav>
+<script src="/js/navbar.js" defer></script>

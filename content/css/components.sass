@@ -1,5 +1,6 @@
 .btn
     display: inline-flex
+    justify-content: center
     align-items: center
     gap: var(--spacing-2)
     padding: var(--spacing-2) var(--spacing-4)
@@ -174,6 +175,25 @@
 
     @media (min-width: 475px)
         display: flex
+
+#nav-dialog
+    background: transparent
+    border: none
+    padding: var(--spacing-4)
+    margin: 0 auto
+
+    > div
+        gap: var(--spacing-2)
+        display: flex
+
+        > #nav-dialog-close
+            padding-top: var(--spacing-1)
+            padding-bottom: var(--spacing-1)
+            margin-left: auto
+            min-width: 50px
+
+    &::backdrop
+        backdrop-filter: blur(4px)
 
 #editor
     width: 100%

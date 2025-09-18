@@ -16,8 +16,9 @@
     <main>
         <div class="holes">
             {{#each holes}}
-            <a href="/holes/{{@key}}" class="hole">
+            <a href="/holes/{{@key}}" class="hole hole-{{this.kind}}">
                 <span>{{@key}}</span>
+                <p>{{this.description}}</p>
             </a>
             {{/each}}
         </div>
