@@ -1,7 +1,7 @@
 import { EditorView } from "codemirror";
 import { lineNumbers } from "@codemirror/view";
 import { Compartment } from "@codemirror/state";
-import { languages, languageNames, LanguageName } from "../languages";
+import { languages, languageNames, LanguageName, snippets } from "../languages";
 import { highlighter } from "../theme";
 import { syntaxHighlighting } from "@codemirror/language";
 
@@ -45,6 +45,8 @@ export class Editor {
                 syntaxHighlighting(highlighter, { fallback: true }),
             ],
         });
+
+        this.setLanguage(this.language);
     }
 
     setLanguage(language: LanguageName) {
@@ -53,6 +55,15 @@ export class Editor {
             this.language = language;
             this.view.dispatch({
                 effects: this.highlighter.reconfigure(languages[language] || languages.c),
+            });
+
+            // Set default snippet
+            this.view.dispatch({
+                changes: {
+                    from: 0,
+                    to: this.view.state.doc.length,
+                    insert: snippets[this.language] || "",
+                }
             });
         } else {
             console.error(`Language ${language} is not supported.`);
