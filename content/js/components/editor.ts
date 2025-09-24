@@ -1,9 +1,10 @@
 import { EditorView } from "codemirror";
-import { lineNumbers } from "@codemirror/view";
+import { lineNumbers, keymap } from "@codemirror/view";
 import { Compartment } from "@codemirror/state";
 import { languages, languageNames, LanguageName, snippets } from "../languages";
 import { highlighter } from "../theme";
-import { syntaxHighlighting } from "@codemirror/language";
+import { syntaxHighlighting, indentUnit } from "@codemirror/language";
+import { indentWithTab, history, historyKeymap } from '@codemirror/commands';
 
 export class Editor {
     editor: HTMLElement;
@@ -43,6 +44,9 @@ export class Editor {
                 EditorView.lineWrapping,
                 lineNumbers(),
                 syntaxHighlighting(highlighter, { fallback: true }),
+                keymap.of([indentWithTab, ...historyKeymap]),
+                indentUnit.of("    "),
+                history(),
             ],
         });
 
