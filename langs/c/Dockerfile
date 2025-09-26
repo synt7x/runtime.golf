@@ -1,0 +1,49 @@
+FROM alpine:3.22 AS builder
+
+RUN apk add --no-cache build-base curl
+
+ENV VER=0.9.27
+
+RUN curl -#L https://download.savannah.nongnu.org/releases/tinycc/tcc-$VER.tar.bz2 \
+    | tar xj --strip-components 1
+
+RUN ./configure --config-musl --prefix=/usr --strip-binaries \
+    && make && make install
+
+FROM alpine:3.22 AS base
+
+COPY --from=0 /lib/ld-musl-x86_64.so.1 /lib/
+COPY --from=0 /usr/bin/tcc /usr/bin/
+COPY --from=0 /usr/include/alloca.h \
+              /usr/include/assert.h \
+              /usr/include/complex.h \
+              /usr/include/ctype.h \
+              /usr/include/errno.h \
+              /usr/include/features.h \
+              /usr/include/fenv.h \
+              /usr/include/float.h \
+              /usr/include/inttypes.h \
+              /usr/include/iso646.h \
+              /usr/include/limits.h \
+              /usr/include/locale.h \
+              /usr/include/math.h \
+              /usr/include/setjmp.h \
+              /usr/include/signal.h \
+              /usr/include/stdalign.h \
+              /usr/include/stdarg.h \
+              /usr/include/stddef.h \
+              /usr/include/stdint.h \
+              /usr/include/stdio.h \
+              /usr/include/stdlib.h \
+              /usr/include/string.h \
+              /usr/include/strings.h \
+              /usr/include/tgmath.h \
+              /usr/include/time.h \
+              /usr/include/uchar.h \
+              /usr/include/wchar.h \
+              /usr/include/wctype.h /usr/include/
+COPY --from=0 /usr/include/bits /usr/include/bits
+COPY --from=0 /usr/lib/libc.so /usr/lib/
+COPY --from=0 /usr/lib/tcc/libtcc1.a /usr/lib/tcc/
+
+ENTRYPOINT ["tcc"]

@@ -13,6 +13,10 @@ content/package-lock.json
 # DB
 data/
 
+# Langs
+langs/runner
+langs/runner.exe
+
 # Extra
 .vscode/
 .idea/

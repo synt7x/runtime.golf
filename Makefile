@@ -1,5 +1,6 @@
 SQLITE ?= sqlite3
 CARGO ?= cargo
+RUST ?= rustc
 NPM ?= npm
 OPENRESTY ?= openresty
 
@@ -10,8 +11,12 @@ DATABASE := runtime_golf.db
 APP := $(CURDIR)/app
 CONTENT := $(CURDIR)/content
 DATA := $(CURDIR)/data
+LANGS := $(CURDIR)/langs
 SERVER := $(CURDIR)/server
 CONF := $(SERVER)/conf
+
+DOCKERFILES := $(wildcard $(LANGS)/*/Dockerfile)
+IMAGES := $(patsubst $(LANGS)/%/Dockerfile,%,$(DOCKERFILES))
 
 all: run
 
@@ -30,7 +35,7 @@ dev:
 	cd $(CONTENT) && $(NPM) install && $(NPM) run build
 	@echo "Content built successfully (dev)"
 
-build: 
+build: docker
 	cd $(APP) && $(CARGO) build --release
 	@echo "App built successfully"
 	cd $(CONTENT) && $(NPM) install && $(NPM) run build
@@ -44,6 +49,12 @@ clean:
 
 init: db build
 	@echo "Project initialized successfully"
+
+docker: $(IMAGES)
+	cd $(LANGS) && rustc runner.rs
+	
+$(IMAGES):
+	cd $(LANGS) && docker build -t runtime-golf-$@ $(LANGS)/$(basename $@)
 
 # Database
 db:
