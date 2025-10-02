@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /users/
 
-Sitemap: /sitemap.xml
+Sitemap: https://runtime.golf/sitemap.xml
