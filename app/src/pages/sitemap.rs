@@ -8,7 +8,7 @@ pub async fn render() -> impl IntoResponse {
 
     for (slug, _) in holes.iter() {
         urls.push_str(&format!(
-            "<url><loc>https://runtime.golf/hole/{}</loc><priority>0.8</priority></url>",
+            "<url><loc>https://runtime.golf/holes/{}</loc><priority>0.8</priority></url>",
             slug
         ));
     }
