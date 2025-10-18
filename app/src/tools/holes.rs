@@ -16,7 +16,12 @@ pub fn load() {
     let mut holes = HashMap::new();
     println!("Loading holes from ../holes");
     for entry in fs::read_dir("../holes").expect("Failed to load holes") {
-        let path = entry.expect("Failed to read hole").path();
+        let directory = entry.expect("Failed to read hole").path();
+        if !directory.is_dir() {
+            continue;
+        }
+
+        let path = directory.join("hole.toml");
         if path.extension().and_then(|s| s.to_str()) == Some("toml") {
             let content = fs::read_to_string(&path).expect("Failed to read hole file");
             let hole: Hole = toml::from_str(&content).expect("Failed to parse hole file");

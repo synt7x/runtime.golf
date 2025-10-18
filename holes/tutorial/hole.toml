@@ -1,0 +1,5 @@
+title = "tutorial"
+kind = "basic"
+id = 3
+description = """Print 'Hello, World!' and args"""
+instructions = """Mirror the output of the default code snippet by printing the text 'Hello, World!' and all arguments supplied to the program. The arguments should be printed in the same order they are provided."""

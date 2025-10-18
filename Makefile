@@ -11,6 +11,7 @@ DATABASE := runtime_golf.db
 APP := $(CURDIR)/app
 CONTENT := $(CURDIR)/content
 DATA := $(CURDIR)/data
+HOLES := $(CURDIR)/holes
 LANGS := $(CURDIR)/langs
 SERVER := $(CURDIR)/server
 CONF := $(SERVER)/conf
@@ -51,7 +52,7 @@ init: db build
 	@echo "Project initialized successfully"
 
 docker: $(IMAGES)
-	cd $(LANGS) && rustc runner.rs
+	cd $(HOLES) && rustc runner.rs
 	
 $(IMAGES):
 	cd $(LANGS) && docker build -t runtime-golf-$@ $(LANGS)/$(basename $@)

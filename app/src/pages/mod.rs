@@ -1,5 +1,7 @@
+mod about;
 pub mod hole;
 pub mod home;
+mod leaderboards;
 pub mod sitemap;
 pub mod user;
 
@@ -12,4 +14,6 @@ pub fn routes() -> Router<RenderState> {
         .route("/sitemap.xml", get(sitemap::render))
         .route("/holes/{id}", get(hole::render))
         .route("/users/{username}", get(user::render))
+        .route("/leaderboards", get(leaderboards::render))
+        .route("/about", get(about::render))
 }
