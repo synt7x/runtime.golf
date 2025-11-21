@@ -163,8 +163,12 @@ main
   font-family: 'Teko'
   text-transform: uppercase
   transform: perspective(50px) rotateX(11deg)
-  text-shadow: black 0px 1px 5px
+  text-shadow: #aaa 0px 1px 5px
   font-size: 2rem
   line-height: 0
   translate: 0 1.5px
   margin: calc(var(--spacing-4) + 1px) 0
+
+@media (prefers-color-scheme: dark)
+  .navbar-brand
+    text-shadow: #000 0px 1px 5px
