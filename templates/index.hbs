@@ -13,6 +13,18 @@
     <header class="header">
         {{> navbar}}
     </header>
+    {{#unless user}}
+    <main>
+        <div class="hero">
+            <h1>Welcome to Runtime Golf!</h1>
+            <p>Runtime Golf takes a new approach to code golf, focused on runtime efficiency rather than code length.
+                Compete to solve challenges with the fastest code possible, using a variety of programming languages.
+            </p>
+            <p>Join us on <a href="https://discord.gg/U8Wct74v">Discord</a> or contribute on <a
+                    href="https://github.com/synt7x/runtime.golf">Github</a>.</p>
+        </div>
+    </main>
+    {{/unless}}
     <main>
         <div class="holes">
             {{#each holes}}
