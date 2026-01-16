@@ -1,0 +1,5 @@
+title = "sha-256"
+kind = "math"
+id = 6
+description = """Generate the SHA-256 of a string"""
+instructions = """Given one string argument, return its SHA-256 hash."""

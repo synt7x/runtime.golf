@@ -1,0 +1,5 @@
+title = "calculator"
+kind = "parse"
+id = 7
+description = """Perform four function operations"""
+instructions = """Given one string argument containing integers delineated by +, -, *, /, evaluate the mathematical expression according to PEMDAS. Output the final number as an integer."""

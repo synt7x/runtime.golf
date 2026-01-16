@@ -2,7 +2,7 @@ SQLITE ?= sqlite3
 CARGO ?= cargo
 RUST ?= rustc
 NPM ?= npm
-OPENRESTY ?= openresty
+OPENRESTY ?= nginx
 
 # Files
 DATABASE := runtime_golf.db

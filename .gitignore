@@ -2,8 +2,9 @@
 app/target/
 app/Cargo.lock
 app/.sqlx/
-jobs/target/
-jobs/Cargo.lock
+holes/runner
+holes/runner.exe
+holes/runner.pdb
 
 # Frontend
 content/node_modules/
@@ -12,10 +13,6 @@ content/package-lock.json
 
 # DB
 data/
-
-# Langs
-langs/runner
-langs/runner.exe
 
 # Extra
 .vscode/
